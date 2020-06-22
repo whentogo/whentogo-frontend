@@ -26,7 +26,7 @@ jobs:
           name: "Adds droplet to deployment firewall"
           command: node ./scripts/firewall.js add $DIGITAL_OCEAN_DROPLET $DIGITAL_OCEAN_DEPLOYMENT_FIREWALL $DIGITAL_OCEAN_TOKEN
       - run: ssh -o "StrictHostKeyChecking no" $HOST_NAME@$HOST_ADDRESS "rm -r /var/www/$SITE_NAME/*"
-      - run: scp -r ./build/* $HOST_NAME@$HOST_ADDRESS:/var/www/$SITE_NAME/*
+      - run: scp -r ./build/* $HOST_NAME@$HOST_ADDRESS:/var/www/$SITE_NAME
       - run:
           name: "Removes droplet from deployment firewall"
           command: node ./scripts/firewall.js remove $DIGITAL_OCEAN_DROPLET $DIGITAL_OCEAN_DEPLOYMENT_FIREWALL $DIGITAL_OCEAN_TOKEN
