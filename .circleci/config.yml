@@ -1,0 +1,48 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@3.0.0
+
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn test --watchAll=false
+  digital-ocean-deploy:
+    executor: node/default
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - $SSH_FINGERPRINT_1
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn build
+      - run:
+          name: "Adds droplet to deployment firewall"
+          command: node ./scripts/firewall.js add $DIGITAL_OCEAN_DROPLET $DIGITAL_OCEAN_DEPLOYMENT_FIREWALL $DIGITAL_OCEAN_TOKEN
+      - run: ssh -o "StrictHostKeyChecking no" $HOST_NAME@$HOST_ADDRESS "rm -r /var/www/$SITE_NAME/*"
+      - run: scp -r ./build/* $HOST_NAME@$HOST_ADDRESS:/var/www/$SITE_NAME
+      - run:
+          name: "Removes droplet from deployment firewall"
+          command: node ./scripts/firewall.js remove $DIGITAL_OCEAN_DROPLET $DIGITAL_OCEAN_DEPLOYMENT_FIREWALL $DIGITAL_OCEAN_TOKEN
+
+workflows:
+  build:
+    jobs:
+      - build-and-test:
+          context: whentogo-frontend
+          filters:
+            branches:
+              only: master
+      - digital-ocean-deploy:
+          context: whentogo-frontend
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
