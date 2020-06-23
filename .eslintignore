@@ -1,3 +1,5 @@
 # console stuff
 serviceWorker.ts
 logger.ts
+build/
+scripts/
