@@ -1,5 +1,94 @@
 {
   "common": {
-    "hello": "Hello"
+    "hello": "Hello",
+    "search": "Search",
+    "ok": "Ok",
+    "got_it": "Got it",
+    "title": "Title",
+    "description": "Description",
+    "send": "Send",
+    "press_me": "Press me",
+    "empty": "Empty",
+    "added": "Added",
+    "remove": "Remove",
+    "time": "Time",
+    "prediction": "Prediction",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "add_to_favourites": "Add to favourites",
+    "last_updated_on": "last updated {{time}}"
+  },
+  "nav": {
+    "home": "Home",
+    "feedback": "Feedback",
+    "faq": "Help"
+  },
+  "home": {
+    "introduction_below": "Welcome! Start adding your most frequented places using the search box below.",
+    "introduction_right": "Welcome! Start adding your most frequented places using the search box on the right."
+  },
+  "not_found": {
+    "oops": "Oops!",
+    "title": "We can't find what you're looking for",
+    "subtitle": "Maybe you'll find what you need using the menu at the top",
+    "back_to_home": "Back to Home"
+  },
+  "facility_types": {
+    "supermarket": "Supermarket",
+    "mall": "Mall",
+    "singpost": "SingPost",
+    "wetmarket": "Wet Market",
+    "no_type": "No type"
+  },
+  "saved_banner": {
+    "title": "Plan your trips",
+    "subtitle": "Easily see how crowded the places you visit often. Remember to wear your mask!"
+  },
+  "helper_text": {
+    "drag_drop": "You can drag and drop the cards above to re-order your list.",
+    "feedback_privacy": "Your feedback will be sent anonymously. We do not ask or collect any personal information in any part of the application.",
+    "add_to_favourites": "Adding places to your favourites list will give you more in-depth information, including current crowd levels with no data."
+  },
+  "error_messages": {
+    "generic": "Something happened, please try again later",
+    "no_name": "No name",
+    "no_address": "Address not available",
+    "no_predictions": "Sorry, it looks like we cannot provide you with more information",
+    "no_predictions_today": "It seems it's already late. We'll show you tomorrow's predictions instead.",
+    "no_search_result": "We couldn't find what you're searching for"
+  },
+  "feedback": {
+    "title": "Submit Feedback",
+    "title_example": "Needs more Cheetos",
+    "description_example": "The cards look funny...",
+    "success_message": "Thank you for using our application! Your feedback has been passed on to the development team."
+  },
+  "status_numbers": {
+    "status_-2": "Closed",
+    "status_-1": "No Data",
+    "status_0": "Not Crowded",
+    "status_1": "Slightly Crowded",
+    "status_2": "Crowded",
+    "status_3": "Very Crowded"
+  },
+  "faq": {
+    "question_1": "How does this app work?",
+    "answer_1": "This app shows you the current crowd levels of frequented places such as malls and markets. Additionally, you can save these places into your own personalised list.",
+    "question_2": "Is the data provided here accurate?",
+    "answer_2": "The data is obtained from URA's SpaceOut web application. The data you see here for malls, supermarkets, post offices and wet markets are the same as the one provided on SpaceOut. Check out their app using the link below.",
+    "question_3": "Do you plan on adding other places such as restaurants?",
+    "answer_3": "Yes, as soon as we find reliable sources of data for these. Let us know in the feedback section if you do.",
+    "question_4": "Do you collect any of my personal data?",
+    "answer_4": "No, all your data is stored locally in your browser, so if you clear your cache, all your personalised data will be lost.",
+    "question_5": "How can I contribute?",
+    "answer_5": "You can provide suggestions by going to the feedback section of this site. Alternatively, you can just go to the link provided below. We also need help with translating content (if you're interested e-mail us).",
+    "question_6": "Is this site free?",
+    "answer_6": "For now, yes. We've tried to keep this site as low-cost as possible so it's available to the public for a longer period of time.",
+    "question_7": "Is this project open-sourced?",
+    "answer_7": "No, not fully for now. You can find the front-end part on Github (link below), but the back-end will remain closed-source because it has some information about our workflow.",
+    "question_8": "Can I have access to your APIs?",
+    "answer_8": "Sure, knock yourself out (docs below). Don't overload the servers though.",
+    "question_9": "How do I contact you?",
+    "answer_9": "You can contact us through the link below. Try not to contact me on any of our personal channels."
   }
 }

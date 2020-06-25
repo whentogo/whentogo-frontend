@@ -14,4 +14,6 @@ export function handleResponse<T>(res: AxiosResponse<T>): T {
   return res.data;
 }
 
-export function generateHeaders() {}
+export function generateHeaders() {
+  return null;
+}

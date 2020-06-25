@@ -7,15 +7,15 @@ import useTheming from '../utils/hooks/useTheming';
 const styles = makeStyles((theme) => ({
   container: {
     flexGrow: 1,
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-    alignContent: "center",
-    justifyItems: "center",
-    justifyContent: "center",
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.palette.background.default,
   },
-}))
+}));
 
 interface LoaderProps extends LoadingComponentProps {}
 
@@ -29,7 +29,7 @@ const Loader: FunctionComponent<LoaderProps> = () => {
         <GridLoader color={palette.primary.main} size={12} loading />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Loader;
