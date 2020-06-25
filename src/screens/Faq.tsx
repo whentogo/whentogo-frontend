@@ -49,7 +49,7 @@ const questions = [
 const styles = makeStyles(() => ({
   pageContainer: {
     flex: 1,
-    height: '100vh',
+    minHeight: '100vh',
     width: '100vw',
     display: 'flex',
     alignItems: 'flex-start',
