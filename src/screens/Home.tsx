@@ -38,25 +38,25 @@ const Home: FunctionComponent<HomeProps> = (props) => {
           </Box>
           <SavedArea />
           <Box marginTop={isAlertOpen ? 2 : 0}>
-              <Collapse in={isAlertOpen}>
-                <Alert
-                  action={
-                    <Button
-                      onClick={() => setIsAlertOpen(false)}
-                      color="inherit"
-                      size="small"
-                    >
-                      {t('common.got_it')}
-                    </Button>
-                  }
-                  severity="info"
-                >
-                  {savedLength > 0
-                    ? t('helper_text.drag_drop')
-                    : t('helper_text.add_to_favourites')}
-                </Alert>
-              </Collapse>
-            </Box>
+            <Collapse in={isAlertOpen}>
+              <Alert
+                action={
+                  <Button
+                    onClick={() => setIsAlertOpen(false)}
+                    color="inherit"
+                    size="small"
+                  >
+                    {t('common.got_it')}
+                  </Button>
+                }
+                severity="info"
+              >
+                {savedLength > 0
+                  ? t('helper_text.drag_drop')
+                  : t('helper_text.add_to_favourites')}
+              </Alert>
+            </Collapse>
+          </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={8} lg={9}>
           <SearchArea />

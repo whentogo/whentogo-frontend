@@ -17,7 +17,6 @@ import Divider from '@material-ui/core/Divider';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Alert from '@material-ui/lab/Alert';
 import { Button } from '@material-ui/core';
-import { blue } from '@material-ui/core/colors';
 import useLanguage from '../utils/hooks/useLanguage';
 import FacilityTypeBadge from './FacilityTypeBadge';
 import StatusBadge from './StatusBadge';
@@ -25,7 +24,6 @@ import {
   getTimeFromNow,
   getPredictionTimeList,
   formatTime,
-  getCurrentTimeNumber,
   getDay,
 } from '../utils/common';
 import {
@@ -160,12 +158,11 @@ const FacilityCard: FunctionComponent<FacilityCardProps> = (props) => {
               )}
               <Box marginBottom={1}>
                 <Typography>
-                  {`${getDay(predictionList.isTomorrow ? 1 : 0) 
-                    } (${
-                      predictionList.isTomorrow
-                        ? t('common.tomorrow')
-                        : t('common.today')
-                    })`}
+                  {`${getDay(predictionList.isTomorrow ? 1 : 0)} (${
+                    predictionList.isTomorrow
+                      ? t('common.tomorrow')
+                      : t('common.today')
+                  })`}
                 </Typography>
               </Box>
               <Table size="small">

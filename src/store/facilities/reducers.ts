@@ -69,7 +69,7 @@ function facilities(
     case FETCH_FACILITY_BY_ID_SUCCESS: {
       return produce(state, (draft) => {
         const initial = state.byId[action.id];
-        const {data} = action;
+        const { data } = action;
 
         draft.byId[action.id] = {
           ...initial,

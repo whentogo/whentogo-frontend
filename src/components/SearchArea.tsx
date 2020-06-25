@@ -11,12 +11,7 @@ import {
   fetchFacilitiesAction,
   changeFacilitiesFilterText,
 } from '../store/facilities/actions';
-import {
-  takeRandomConsecFromArray,
-  debounce,
-  normalizedTrim,
-  hasMatch,
-} from '../utils/common';
+import { debounce, normalizedTrim, hasMatch } from '../utils/common';
 import { Facility } from '../services/facilities';
 
 // TODO: move this somewhere else
@@ -43,7 +38,7 @@ const mapStateToProps = (state: RootState) => {
   const list = allId.map((id) => byId[id]);
   const facilities = text
     ? filterFacilitiesByText(list, text)
-    : takeRandomConsecFromArray(list, 8);
+    : list.slice(0, 8);
   return {
     facilities,
     isFetching,
