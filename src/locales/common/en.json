@@ -47,7 +47,7 @@
   "helper_text": {
     "drag_drop": "You can drag and drop the cards above to re-order your list.",
     "feedback_privacy": "Your feedback will be sent anonymously. We do not ask or collect any personal information in any part of the application.",
-    "add_to_favourites": "Adding places to your favourites list will give you more in-depth information, including current crowd levels with no data."
+    "add_to_favourites": "Adding places to the favourites list will give you more in-depth information about crowd levels at later timings."
   },
   "error_messages": {
     "generic": "Something happened, please try again later",
