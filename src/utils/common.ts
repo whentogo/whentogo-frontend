@@ -41,7 +41,7 @@ export function getCurrentTimeNumber(): number {
 }
 
 export function getDay(daysFromNow: number = 0) {
-  return moment().add('day', daysFromNow).format('dddd');
+  return moment().add(daysFromNow, 'day').format('dddd');
 }
 
 export function getPredictionTimeList(distribution: number[][]) {

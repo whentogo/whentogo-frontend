@@ -21,7 +21,8 @@
   "nav": {
     "home": "Home",
     "feedback": "Feedback",
-    "faq": "Help"
+    "faq": "Help",
+    "theme": "Theme"
   },
   "home": {
     "introduction_below": "Welcome! Start adding your most frequented places using the search box below.",

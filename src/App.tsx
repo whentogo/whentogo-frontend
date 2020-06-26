@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { connect, ConnectedProps } from 'react-redux';
 import { lightTheme, darkTheme } from './config/theme';
 import { loadTranslations } from './services/translation';
 import { routes } from './config/routes';
 import AppHeaderBar from './components/AppHeaderBar';
 import AppContainer from './components/AppContainer';
+import { RootState } from './store';
 
 loadTranslations();
+
+const mapStateToProps = (state: RootState) => {
+  const { theme } = state.ui;
+  return { theme };
+};
+
+const connector = connect(mapStateToProps);
+type ReduxProps = ConnectedProps<typeof connector>;
+type AppProps = ReduxProps;
 
 const styles = makeStyles(() => ({
   app: {
@@ -16,13 +27,13 @@ const styles = makeStyles(() => ({
   },
 }));
 
-function App() {
+const App: FunctionComponent<AppProps> = (props) => {
+  const { theme } = props;
   const classes = styles();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   return (
     <div className={classes.app}>
-      <ThemeProvider theme={prefersDarkMode ? darkTheme : lightTheme}>
+      <ThemeProvider theme={theme === 'dark' ? darkTheme() : lightTheme()}>
         <AppContainer>
           <HashRouter>
             <AppHeaderBar />
@@ -41,6 +52,6 @@ function App() {
       </ThemeProvider>
     </div>
   );
-}
+};
 
-export default App;
+export default connector(App);

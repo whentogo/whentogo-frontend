@@ -13,8 +13,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import HelpIcon from '@material-ui/icons/HelpOutline';
 import { useHistory } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
 import { ReactComponent as WhentogoIcon } from '../assets/icons/whentogo.svg';
 import useLanguage from '../utils/hooks/useLanguage';
+import ThemePreferenceIcon from './ThemePreferenceIcon';
+import { RootState } from '../store';
 
 const routes = [
   {
@@ -31,6 +34,11 @@ const routes = [
     key: 'faq',
     link: '/faq',
     IconComponent: HelpIcon,
+  },
+  {
+    key: 'theme',
+    link: 'theme',
+    IconComponent: ThemePreferenceIcon,
   },
 ];
 
@@ -101,7 +109,16 @@ const styles = makeStyles((theme) => {
   };
 });
 
-const AppHeaderBar: FunctionComponent<any> = () => {
+const mapStateToProps = (state: RootState) => {
+  const { theme } = state.ui;
+  return { theme };
+};
+
+const connector = connect(mapStateToProps);
+type ReduxProps = ConnectedProps<typeof connector>;
+type AppHeaderBarProps = ReduxProps;
+
+const AppHeaderBar: FunctionComponent<AppHeaderBarProps> = (props) => {
   const [isDialOpen, setIsDialOpen] = useState<boolean>(false);
   const { t } = useLanguage();
   const theme = useTheme();
@@ -110,6 +127,14 @@ const AppHeaderBar: FunctionComponent<any> = () => {
 
   function backToHome() {
     history.push('/');
+  }
+
+  function onDialClicked(route: string) {
+    if (route === 'theme') {
+      // handled by icon component
+      return;
+    }
+    history.push(route || '/');
   }
 
   return (
@@ -173,7 +198,7 @@ const AppHeaderBar: FunctionComponent<any> = () => {
                         />
                       }
                       tooltipTitle={t(`nav.${route.key}`)}
-                      onClick={() => history.push(route.link || '/')}
+                      onClick={() => onDialClicked(route.link)}
                     />
                   ))}
                 </SpeedDial>
@@ -186,4 +211,4 @@ const AppHeaderBar: FunctionComponent<any> = () => {
   );
 };
 
-export default AppHeaderBar;
+export default connector(AppHeaderBar);

@@ -42,63 +42,65 @@ function createAppTheme(options: ThemeOptions) {
   });
 }
 
-export const lightTheme = createAppTheme({
-  palette: {
-    type: 'light',
-    primary: {
-      main: '#1565C0',
+export const lightTheme = () =>
+  createAppTheme({
+    palette: {
+      type: 'light',
+      primary: {
+        main: '#1565C0',
+      },
+      secondary: {
+        main: '#D32F2F',
+      },
+      background: {
+        default: '#eeeeee',
+      },
     },
-    secondary: {
-      main: '#D32F2F',
+    draggable: {
+      active: '#EEEEEE',
+      default: '#fff',
     },
-    background: {
-      default: '#eeeeee',
+    facilities: {
+      wetmarket: '#880E4F',
+      supermarket: '#004D40',
+      mall: '#4A148C',
+      singpost: '#0D47A1',
     },
-  },
-  draggable: {
-    active: '#EEEEEE',
-    default: '#fff',
-  },
-  facilities: {
-    wetmarket: '#880E4F',
-    supermarket: '#004D40',
-    mall: '#4A148C',
-    singpost: '#0D47A1',
-  },
-  droppable: {
-    active: '#BDBDBD',
-    default: '#E0E0E0',
-  },
-  typography: {
-    fontFamily: "'Open Sans', 'Helvetica', 'Arial', sans-serif",
-  },
-});
+    droppable: {
+      active: '#BDBDBD',
+      default: '#E0E0E0',
+    },
+    typography: {
+      fontFamily: "'Open Sans', 'Helvetica', 'Arial', sans-serif",
+    },
+  });
 
-export const darkTheme = createAppTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#90CAF9',
+export const darkTheme = () =>
+  createAppTheme({
+    palette: {
+      type: 'dark',
+      primary: {
+        main: '#90CAF9',
+      },
+      secondary: {
+        main: '#EF9A9A',
+      },
     },
-    secondary: {
-      main: '#EF9A9A',
+    draggable: {
+      active: '#323232',
+      default: '#424242',
     },
-  },
-  draggable: {
-    active: '#323232',
-    default: '#424242',
-  },
-  facilities: {
-    wetmarket: '#F48FB1',
-    supermarket: '#4DB6AC',
-    mall: '#CE93D8',
-    singpost: '#42A5F5',
-  },
-  droppable: {
-    active: '#E0E0E0',
-    default: '#242424',
-  },
-  typography: {
-    fontFamily: "'Open Sans', 'Helvetica', 'Arial', sans-serif",
-  },
-});
+    facilities: {
+      wetmarket: '#F48FB1',
+      supermarket: '#4DB6AC',
+      mall: '#CE93D8',
+      singpost: '#42A5F5',
+    },
+    droppable: {
+      active: '#E0E0E0',
+      default: '#242424',
+    },
+    typography: {
+      fontFamily: "'Open Sans', 'Helvetica', 'Arial', sans-serif",
+    },
+  });
