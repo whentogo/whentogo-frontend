@@ -61,7 +61,7 @@ export function getPredictionTimeList(distribution: number[][]) {
   }
 
   return {
-    isTomorrow: currTime > 14,
+    isTomorrow: currTime > 22,
     startHour,
     list,
   };
