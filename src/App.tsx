@@ -1,7 +1,6 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { connect, ConnectedProps } from 'react-redux';
 import { lightTheme, darkTheme } from './config/theme';
 import { loadTranslations } from './services/translation';
