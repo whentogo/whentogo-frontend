@@ -50,7 +50,7 @@ const ThemePreferenceIcon: FunctionComponent<ThemePreferenceProps> = (
   const currentTheme = theme || preferenceWithoutSaved;
 
   return (
-    <IconButton onClick={onChangeTheme}>
+    <IconButton size="small" onClick={onChangeTheme}>
       {currentTheme === 'light' ? (
         <DarkThemeIcon htmlColor={htmlColor} />
       ) : (
