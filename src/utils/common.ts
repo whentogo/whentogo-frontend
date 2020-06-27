@@ -45,7 +45,7 @@ export function getDay(daysFromNow: number = 0) {
 }
 
 export function getPredictionTimeList(distribution: number[][]) {
-  const currDay = getCurrentDayNumber() - 1;
+  const currDay = getCurrentDayNumber();
   const currTime = getCurrentTimeNumber();
 
   let isTomorrow = false;
@@ -59,7 +59,7 @@ export function getPredictionTimeList(distribution: number[][]) {
   } else {
     // get tomorrow's timing
     isTomorrow = true;
-    list = [...distribution[currDay + (1 % 7)]];
+    list = [...distribution[(currDay + 1) % 7]];
   }
 
   return {
