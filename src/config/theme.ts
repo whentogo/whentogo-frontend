@@ -11,6 +11,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
       supermarket: string;
       mall: string;
       singpost: string;
+      park: string;
     };
     droppable: {
       default: string;
@@ -28,6 +29,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
       supermarket: string;
       mall: string;
       singpost: string;
+      park: string;
     };
     droppable: {
       default: string;
@@ -65,6 +67,7 @@ export const lightTheme = () =>
       supermarket: '#004D40',
       mall: '#4A148C',
       singpost: '#0D47A1',
+      park: '#33691E'
     },
     droppable: {
       active: '#BDBDBD',
@@ -95,6 +98,7 @@ export const darkTheme = () =>
       supermarket: '#4DB6AC',
       mall: '#CE93D8',
       singpost: '#42A5F5',
+      park: '#7CB342'
     },
     droppable: {
       active: '#E0E0E0',
