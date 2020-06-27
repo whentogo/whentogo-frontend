@@ -48,6 +48,7 @@ export function getPredictionTimeList(distribution: number[][]) {
   const currDay = getCurrentDayNumber() - 1;
   const currTime = getCurrentTimeNumber();
 
+  let isTomorrow = false;
   let startHour: number = 8;
   let list: number[] = [];
   if (currTime < 22) {
@@ -57,11 +58,12 @@ export function getPredictionTimeList(distribution: number[][]) {
     list = curr.slice(startHour - 9, curr.length + 1);
   } else {
     // get tomorrow's timing
+    isTomorrow = true;
     list = [...distribution[currDay + (1 % 7)]];
   }
 
   return {
-    isTomorrow: currTime > 22,
+    isTomorrow,
     startHour,
     list,
   };
