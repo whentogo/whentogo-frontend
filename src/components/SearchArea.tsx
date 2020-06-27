@@ -114,6 +114,7 @@ const SearchArea = (props: SearchAreaProps) => {
                     status={data.status}
                     type={data.type}
                     name={data.name}
+                    postalCode={data.postal_code}
                     location={data.coordinates}
                     address={data.address}
                   />

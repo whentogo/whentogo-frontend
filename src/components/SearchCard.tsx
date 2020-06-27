@@ -49,6 +49,7 @@ interface SearchAreaProps {
   name?: string;
   status?: number;
   address?: string;
+  postalCode?: string;
   location?: FacilityCoordinates;
 }
 
@@ -63,6 +64,7 @@ const SearchCard: FunctionComponent<SearchCardProps> = (props) => {
     name = t('error_messages.no_name'),
     address = t('error_messages.no_address'),
     savedById,
+    postalCode,
     location,
   } = props;
 
@@ -86,6 +88,8 @@ const SearchCard: FunctionComponent<SearchCardProps> = (props) => {
     }
   }
 
+  const postCode = postalCode ? `, Singapore ${postalCode}` : '';
+
   return (
     <Card className={classes.container} elevation={0}>
       <Box paddingX={2} paddingTop={2} flex={1} paddingBottom={1}>
@@ -93,7 +97,7 @@ const SearchCard: FunctionComponent<SearchCardProps> = (props) => {
           <b>{name}</b>
         </Typography>
         <Typography variant="caption" color="textSecondary">
-          {address}
+          {`${address}${postCode}`}
         </Typography>
         <Box display="flex" flexDirection="row" marginTop={0.8}>
           <Box marginRight={0.5}>

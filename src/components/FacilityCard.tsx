@@ -92,6 +92,7 @@ const FacilityCard: FunctionComponent<FacilityCardProps> = (props) => {
   const predictionList = facility.distribution
     ? getPredictionTimeList(facility.distribution)
     : null;
+  const postCode = facility.postal_code ? `, Singapore ${facility.postal_code}` : '';
 
   return (
     <Card
@@ -105,7 +106,7 @@ const FacilityCard: FunctionComponent<FacilityCardProps> = (props) => {
           <b>{facility.name || t('error_messages.no_name')}</b>
         </Typography>
         <Typography variant="caption" color="textSecondary">
-          {facility.address || t('error_messages.no_address')}
+          {(facility.address || t('error_messages.no_address')) + postCode}
         </Typography>
         <Box display="flex" flexDirection="row" marginTop={1}>
           <FacilityTypeBadge type={facility.type} />

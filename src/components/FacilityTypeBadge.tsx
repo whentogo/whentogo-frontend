@@ -31,12 +31,15 @@ const styles = makeStyles((theme) => {
     singpost: {
       backgroundColor: theme.facilities.singpost,
     },
+    park: {
+      backgroundColor: theme.facilities.park,
+    }
   };
 });
 
 // TODO: change to enum
 interface StatusBadgeProps {
-  type?: 'supermarket' | 'mall' | 'wetmarket' | 'singpost' | 'no_type';
+  type?: 'supermarket' | 'mall' | 'wetmarket' | 'singpost' | 'park' | 'no_type';
 }
 
 const FacilityTypeBadge: FunctionComponent<StatusBadgeProps> = (props) => {
@@ -57,6 +60,9 @@ const FacilityTypeBadge: FunctionComponent<StatusBadgeProps> = (props) => {
       }
       case 'wetmarket': {
         return classes.wetmarket;
+      }
+      case 'park': {
+        return classes.park;
       }
       case 'no_type':
       default: {

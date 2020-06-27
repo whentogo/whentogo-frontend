@@ -3,4 +3,5 @@ export type FacilityTypes =
   | 'mall'
   | 'wetmarket'
   | 'singpost'
-  | 'no_type';
+  | 'no_type'
+  | 'park';
