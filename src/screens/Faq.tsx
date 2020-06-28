@@ -9,6 +9,7 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import useLanguage from '../utils/hooks/useLanguage';
 
 const questions = [
@@ -51,8 +52,7 @@ const styles = makeStyles(() => ({
     minHeight: '100%',
     width: '100vw',
     display: 'flex',
-    paddingTop: '10%',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 }));
@@ -96,6 +96,41 @@ function Faq() {
             )}
           </ExpansionPanel>
         ))}
+        <ExpansionPanel elevation={0}>
+          <ExpansionPanelSummary
+            IconButtonProps={{ disableRipple: true }}
+            expandIcon={<ExpandMoreIcon />}
+          >
+            <Typography>{t(`common.credits`)}</Typography>
+          </ExpansionPanelSummary>
+          <ExpandionPanelDetails>
+            <Typography>
+              <Link
+                target="_blank"
+                href="https://icons8.com/icons/set/shrug-emoticon"
+              >
+                Shrug Emoticon icon
+              </Link>{' '}
+              icon by{' '}
+              <Link target="_blank" href="https://icons8.com">
+                Icons8
+              </Link>
+              <br />
+              Icons made by{' '}
+              <Link
+                href="https://www.flaticon.com/authors/freepik"
+                title="Freepik"
+              >
+                Freepik
+              </Link>{' '}
+              from{' '}
+              <Link href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </Link>
+              <br />
+            </Typography>
+          </ExpandionPanelDetails>
+        </ExpansionPanel>
       </Container>
     </div>
   );

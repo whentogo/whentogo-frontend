@@ -16,6 +16,7 @@
     "today": "Today",
     "tomorrow": "Tomorrow",
     "add_to_favourites": "Add to favourites",
+    "credits": "Credits",
     "last_updated_on": "last updated {{time}}"
   },
   "nav": {
