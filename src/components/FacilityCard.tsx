@@ -92,7 +92,9 @@ const FacilityCard: FunctionComponent<FacilityCardProps> = (props) => {
   const predictionList = facility.distribution
     ? getPredictionTimeList(facility.distribution)
     : null;
-  const postCode = facility.postal_code ? `, Singapore ${facility.postal_code}` : '';
+  const postCode = facility.postal_code
+    ? `, Singapore ${facility.postal_code}`
+    : '';
 
   return (
     <Card

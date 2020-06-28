@@ -33,7 +33,7 @@ const styles = makeStyles((theme) => {
     },
     park: {
       backgroundColor: theme.facilities.park,
-    }
+    },
   };
 });
 

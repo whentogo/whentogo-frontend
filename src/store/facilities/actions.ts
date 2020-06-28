@@ -14,6 +14,8 @@ import {
   REHYDRATE_SAVED_FACILITIES,
   MOVE_SAVED_FACILITY,
   CHANGE_FACILITIES_FILTER_TEXT,
+  CHANGE_FACILITIES_LOCATION_FILTER,
+  REMOVE_FACILITIES_LOCATION_FILTER,
 } from './types';
 import { AppThunk } from '..';
 import {
@@ -154,5 +156,22 @@ export function changeFacilitiesFilterText(
   return {
     type: CHANGE_FACILITIES_FILTER_TEXT,
     text,
+  };
+}
+
+export function changeFacilitiesLocationFilter(
+  latitude: number,
+  longitude: number,
+): FacilitiesActionTypes {
+  return {
+    type: CHANGE_FACILITIES_LOCATION_FILTER,
+    latitude,
+    longitude,
+  };
+}
+
+export function removeFacilitiesLocationFilter(): FacilitiesActionTypes {
+  return {
+    type: REMOVE_FACILITIES_LOCATION_FILTER,
   };
 }

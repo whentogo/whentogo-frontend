@@ -1,9 +1,15 @@
 import numeral from 'numeral';
 import moment from 'moment';
 import { isMatch } from 'micromatch';
+import getDistance from 'geolib/es/getDistance';
 import _ from 'lodash';
 
 type Primitive = string | number | boolean;
+
+type Position = {
+  latitude: number;
+  longitude: number;
+};
 
 export function formatNumber(number: number | string) {
   return numeral(number).format('0,0');
@@ -42,6 +48,20 @@ export function getCurrentTimeNumber(): number {
 
 export function getDay(daysFromNow: number = 0) {
   return moment().add(daysFromNow, 'day').format('dddd');
+}
+
+export function calculateDistance(currLocation: Position, location: Position) {
+  return getDistance(
+    {
+      latitude: currLocation.latitude,
+      longitude: currLocation.longitude,
+    },
+    {
+      latitude: location.latitude,
+      longitude: location.longitude,
+    },
+    100, // precision to 100
+  );
 }
 
 export function getPredictionTimeList(distribution: number[][]) {

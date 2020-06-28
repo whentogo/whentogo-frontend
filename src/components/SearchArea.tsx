@@ -13,6 +13,7 @@ import {
 } from '../store/facilities/actions';
 import { debounce, normalizedTrim, hasMatch } from '../utils/common';
 import { Facility } from '../services/facilities';
+import { getAllFacilities } from '../selectors/facilities';
 
 // TODO: move this somewhere else
 function filterFacilitiesByText(
@@ -32,10 +33,11 @@ function filterFacilitiesByText(
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { allId, byId, isFetching, filters } = state.facilities;
+  const { isFetching, filters } = state.facilities;
   const { text } = filters;
 
-  const list = allId.map((id) => byId[id]);
+  const list = getAllFacilities(state);
+
   const facilities = text
     ? filterFacilitiesByText(list, text)
     : list.slice(0, 8);

@@ -16,6 +16,10 @@ export const UNSAVE_FACILITY = 'UNSAVE_FACILITY';
 export const MOVE_SAVED_FACILITY = 'MOVE_SAVED_FACILITY';
 export const REHYDRATE_SAVED_FACILITIES = 'REHYRDRATE_SAVED_FACILITIES';
 export const CHANGE_FACILITIES_FILTER_TEXT = 'CHANGE_FACILITIES_FILTER_TEXT';
+export const CHANGE_FACILITIES_LOCATION_FILTER =
+  'CHANGE_FACILITIES_LOCATION_FILTER';
+export const REMOVE_FACILITIES_LOCATION_FILTER =
+  'REMOVE_FACILITIES_LOCATION_FILTER';
 
 interface FetchFacilitiesAction {
   type: typeof FETCH_FACILITIES_REQUEST;
@@ -83,6 +87,16 @@ interface ChangeFacilitiesFilterTextAction {
   text: string;
 }
 
+interface ChangeFacilitiesLocationFiterAction {
+  type: typeof CHANGE_FACILITIES_LOCATION_FILTER;
+  latitude: number;
+  longitude: number;
+}
+
+interface RemoveFacilitiesLocationFilterAction {
+  type: typeof REMOVE_FACILITIES_LOCATION_FILTER;
+}
+
 export type FacilitiesActionTypes =
   | FetchFacilitiesAction
   | FetchFacilitiesErrorAction
@@ -96,7 +110,9 @@ export type FacilitiesActionTypes =
   | UnsaveFacilityAction
   | RehydrateSavedFacilitiesAction
   | MoveSavedFacility
-  | ChangeFacilitiesFilterTextAction;
+  | ChangeFacilitiesFilterTextAction
+  | ChangeFacilitiesLocationFiterAction
+  | RemoveFacilitiesLocationFilterAction;
 
 interface FacilitiesByType {
   [type: string]: string[];
@@ -112,8 +128,14 @@ export interface FacilitiesById {
   [id: string]: Partial<Facility & FacilityByIdMeta>;
 }
 
+interface FacilitiesLocationFilter {
+  latitude: number;
+  longitude: number;
+}
+
 interface FacilitiesFilters {
   text: string;
+  location?: FacilitiesLocationFilter | null;
 }
 
 interface FacilitiesSavedById {

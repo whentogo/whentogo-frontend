@@ -7,8 +7,14 @@ import IconButton from '@material-ui/core/IconButton';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import SearchIcon from '@material-ui/icons/Search';
 import useLanguage from '../utils/hooks/useLanguage';
+import { useDispatch, connect, ConnectedProps } from 'react-redux';
+import {
+  changeFacilitiesLocationFilter,
+  removeFacilitiesLocationFilter,
+} from '../store/facilities/actions';
+import { RootState } from '../store';
 
-const useStyles = makeStyles((theme) => ({
+const styles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
@@ -28,20 +34,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const mapStateToProps = (state: RootState) => {
+  const { location } = state.facilities.filters;
+
+  return {
+    isLocationFilterOn: !!location,
+  };
+};
+
+const connector = connect(mapStateToProps);
+type ReduxProps = ConnectedProps<typeof connector>;
+type SearchInputPropsWithRedux = ReduxProps & SearchInputProps;
+
 interface SearchInputProps {
   onChangeText?: (text: string) => void;
 }
 
-const SearchInput: FunctionComponent<SearchInputProps> = (props) => {
-  const { onChangeText = () => {} } = props;
-  const classes = useStyles();
+const SearchInput: FunctionComponent<SearchInputPropsWithRedux> = (props) => {
+  const { onChangeText = () => {}, isLocationFilterOn } = props;
+  const classes = styles();
   const { t } = useLanguage();
+  const dispatch = useDispatch();
 
   function onChange(
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) {
     const { value } = event.target;
     onChangeText(value);
+  }
+
+  async function onLocationClick() {
+    if (!isLocationFilterOn) {
+      navigator.geolocation.getCurrentPosition((location) => {
+        const { latitude, longitude } = location.coords;
+        dispatch(changeFacilitiesLocationFilter(latitude, longitude));
+      });
+      return;
+    }
+    dispatch(removeFacilitiesLocationFilter());
   }
 
   return (
@@ -55,14 +85,18 @@ const SearchInput: FunctionComponent<SearchInputProps> = (props) => {
       <SearchIcon color="disabled" />
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton
+        onClick={onLocationClick}
         color="default"
         className={classes.iconButton}
         aria-label="directions"
       >
-        <MyLocationIcon fontSize="small" />
+        <MyLocationIcon
+          fontSize="small"
+          color={isLocationFilterOn ? 'primary' : 'disabled'}
+        />
       </IconButton>
     </Paper>
   );
 };
 
-export default SearchInput;
+export default connector(SearchInput);

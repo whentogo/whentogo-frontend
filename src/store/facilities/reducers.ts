@@ -15,6 +15,8 @@ import {
   REHYDRATE_SAVED_FACILITIES,
   MOVE_SAVED_FACILITY,
   CHANGE_FACILITIES_FILTER_TEXT,
+  CHANGE_FACILITIES_LOCATION_FILTER,
+  REMOVE_FACILITIES_LOCATION_FILTER,
 } from './types';
 import { getCurrentTimeInMillis, removeOneFromArray } from '../../utils/common';
 
@@ -30,6 +32,7 @@ const initialState: FacilitiesState = {
   savedById: {},
   filters: {
     text: '',
+    location: null,
   },
 };
 
@@ -120,6 +123,19 @@ function facilities(
     case CHANGE_FACILITIES_FILTER_TEXT: {
       return produce(state, (draft) => {
         draft.filters.text = action.text;
+      });
+    }
+    case CHANGE_FACILITIES_LOCATION_FILTER: {
+      return produce(state, (draft) => {
+        draft.filters.location = {
+          latitude: action.latitude,
+          longitude: action.longitude,
+        };
+      });
+    }
+    case REMOVE_FACILITIES_LOCATION_FILTER: {
+      return produce(state, (draft) => {
+        draft.filters.location = null;
       });
     }
     default: {
