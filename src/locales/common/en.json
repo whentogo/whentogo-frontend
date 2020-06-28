@@ -77,7 +77,7 @@
     "question_1": "How does this app work?",
     "answer_1": "This app shows you the current crowd levels of frequented places such as malls and markets. Additionally, you can save these places into your own personalised list.",
     "question_2": "Is the data provided here accurate?",
-    "answer_2": "The data is obtained from URA's SpaceOut web application. The data you see here for malls, supermarkets, post offices and wet markets are the same as the one provided on SpaceOut. Check out their app using the link below.",
+    "answer_2": "The data is obtained from URA's SpaceOut and NParks' Safe Distance @ Parks web applications. The data you see here for malls, supermarkets, post offices, wet markets and parks are the same as the one provided on the aforementioned websites.",
     "question_3": "Do you plan on adding other places such as restaurants?",
     "answer_3": "Yes, as soon as we find reliable sources of data for these. Let us know in the feedback section if you do.",
     "question_4": "Do you collect any of my personal data?",

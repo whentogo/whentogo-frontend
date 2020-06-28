@@ -17,7 +17,6 @@ const questions = [
   },
   {
     key: '2',
-    link: 'https://www.spaceout.gov.sg/',
   },
   {
     key: '3',
