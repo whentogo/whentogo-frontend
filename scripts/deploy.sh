@@ -105,10 +105,10 @@ echo Handling node.js deployment.
 # 2. Install npm packages
 if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
   cd "$DEPLOYMENT_SOURCE"
-  npm install yarn -g
+  npm install --save yarn
   exitWithMessageOnError "npm failed"
-  yarn install
-  yarn build
+  npx yarn install
+  npx yarn build
   cd - > /dev/null
 fi
 
