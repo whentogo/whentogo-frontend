@@ -105,8 +105,10 @@ selectNodeVersion
 # 2. Install npm packages
 if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
   cd "$DEPLOYMENT_SOURCE"
-  eval $NPM_CMD install
+  eval $NPM_CMD install yarn -g
   exitWithMessageOnError "npm failed"
+  yarn install
+  yarn build
   cd - > /dev/null
 fi
 
