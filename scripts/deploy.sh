@@ -109,6 +109,7 @@ if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
   exitWithMessageOnError "npm failed"
   npx yarn install
   npx yarn build
+  cp "$DEPLOYMENT_SOURCE/build/index.html" "$DEPLOYMENT_SOURCE/build/hostingstart.html"
   cd - > /dev/null
 fi
 
