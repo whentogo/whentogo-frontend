@@ -67,32 +67,32 @@ fi
 # Node Helpers
 # ------------
 
-selectNodeVersion () {
-  if [[ -n "$KUDU_SELECT_NODE_VERSION_CMD" ]]; then
-    SELECT_NODE_VERSION="$KUDU_SELECT_NODE_VERSION_CMD \"$DEPLOYMENT_SOURCE\" \"$DEPLOYMENT_TARGET\" \"$DEPLOYMENT_TEMP\""
-    eval $SELECT_NODE_VERSION
-    exitWithMessageOnError "select node version failed"
+# selectNodeVersion () {
+#   if [[ -n "$KUDU_SELECT_NODE_VERSION_CMD" ]]; then
+#     SELECT_NODE_VERSION="$KUDU_SELECT_NODE_VERSION_CMD \"$DEPLOYMENT_SOURCE\" \"$DEPLOYMENT_TARGET\" \"$DEPLOYMENT_TEMP\""
+#     eval $SELECT_NODE_VERSION
+#     exitWithMessageOnError "select node version failed"
 
-    if [[ -e "$DEPLOYMENT_TEMP/__nodeVersion.tmp" ]]; then
-      NODE_EXE=`cat "$DEPLOYMENT_TEMP/__nodeVersion.tmp"`
-      exitWithMessageOnError "getting node version failed"
-    fi
+#     if [[ -e "$DEPLOYMENT_TEMP/__nodeVersion.tmp" ]]; then
+#       NODE_EXE=`cat "$DEPLOYMENT_TEMP/__nodeVersion.tmp"`
+#       exitWithMessageOnError "getting node version failed"
+#     fi
     
-    if [[ -e "$DEPLOYMENT_TEMP/__npmVersion.tmp" ]]; then
-      NPM_JS_PATH=`cat "$DEPLOYMENT_TEMP/__npmVersion.tmp"`
-      exitWithMessageOnError "getting npm version failed"
-    fi
+#     if [[ -e "$DEPLOYMENT_TEMP/__npmVersion.tmp" ]]; then
+#       NPM_JS_PATH=`cat "$DEPLOYMENT_TEMP/__npmVersion.tmp"`
+#       exitWithMessageOnError "getting npm version failed"
+#     fi
 
-    if [[ ! -n "$NODE_EXE" ]]; then
-      NODE_EXE=node
-    fi
+#     if [[ ! -n "$NODE_EXE" ]]; then
+#       NODE_EXE=node
+#     fi
 
-    NPM_CMD="\"$NODE_EXE\" \"$NPM_JS_PATH\""
-  else
-    NPM_CMD=npm
-    NODE_EXE=node
-  fi
-}
+#     NPM_CMD="\"$NODE_EXE\" \"$NPM_JS_PATH\""
+#   else
+#     NPM_CMD=npm
+#     NODE_EXE=node
+#   fi
+# }
 
 ##################################################################################################################################
 # Deployment
@@ -100,12 +100,12 @@ selectNodeVersion () {
 
 echo Handling node.js deployment.
 # 1. Select node version
-selectNodeVersion
+# selectNodeVersion
 
 # 2. Install npm packages
 if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
   cd "$DEPLOYMENT_SOURCE"
-  eval $NPM_CMD install yarn -g
+  npm install yarn -g
   exitWithMessageOnError "npm failed"
   yarn install
   yarn build
